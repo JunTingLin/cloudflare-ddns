@@ -54,3 +54,6 @@ To automate the script execution, you can set up a cron job to run the script at
 
 `*/5 * * * * /path/to/your/project/cloudflare-ddns/.venv/bin/python /path/to/your/project/cloudflare-ddns/update_ddns.py >> /path/to/your/project/cloudflare-ddns/cron.log 2>&1
 `
+
+## Tutorial
+For a step-by-step tutorial on how to find your Cloudflare Zone ID and API Token, you can refer to this [YouTube video](https://www.youtube.com/watch?v=_bJUFYDR2X4). Please note that the video demonstrates the process using a Shell script, but this project uses a more flexible Python script.
