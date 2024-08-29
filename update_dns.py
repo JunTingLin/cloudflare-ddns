@@ -1,6 +1,11 @@
 import requests
 from dotenv import load_dotenv
 import os
+from datetime import datetime
+
+def log_message(message):
+    timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    print(f"[{timestamp}] {message}")
 
 load_dotenv()
 
@@ -38,10 +43,10 @@ if response.status_code == 200:
             }
             update_response = requests.put(update_url, headers=headers, json=data)
             if update_response.status_code == 200:
-                print(f"DNS record for {domain} updated to {public_ip}")
+                log_message(f"DNS record for {domain} updated to {public_ip}")
             else:
-                print(f"Failed to update DNS record for {domain}: {update_response.json()}")
+                log_message(f"Failed to update DNS record for {domain}: {update_response.json()}")
         else:
-            print(f"Record ID for {domain} not found")
+            log_message(f"Record ID for {domain} not found")
 else:
-    print("Failed to fetch DNS records")
+    log_message(f"Failed to fetch DNS records: {response.status_code} - {response.text}")
